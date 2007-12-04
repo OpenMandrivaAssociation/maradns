@@ -1,6 +1,6 @@
 %define name	maradns
 %define version	1.1.43
-%define release	1mdk
+%define release	 %mkrel 1
 
 Summary:	An authoritative and recursive DNS server made with security in mind
 Name:		%{name}
