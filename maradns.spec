@@ -13,7 +13,6 @@ Source0:	http://www.maradns.org/download/%{name}-%{version}.tar.bz2
 Patch0:		maradns-1.1.42-install.patch.bz2
 Patch1:		maradns-1.1.42-initscript.patch.bz2
 Patch2:		maradns-1.1.42-mararc_examples.patch.bz2
-BuildRoot:	%_tmppath/%{name}-buildroot
 Requires(post):	rpm-helper
 Conflicts:	tmdns
 
