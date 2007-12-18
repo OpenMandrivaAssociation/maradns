@@ -39,28 +39,28 @@ mkdir -p $RPM_BUILD_ROOT/usr/share/man/{man1,man5,man8}
 mkdir -p $RPM_BUILD_ROOT/etc/rc.d/init.d
 mkdir -p $RPM_BUILD_ROOT/var/log/maradns
 PREFIX="$RPM_BUILD_ROOT/usr/" MAN1="$RPM_BUILD_ROOT/%{_mandir}/man1" make install
-cp ${RPM_BUILD_DIR}/%{name}-%{version}/doc/en/examples/example_authoritative_mararc.txt \
+cp ${RPM_BUILD_DIR}/%{name}/doc/en/examples/example_authoritative_mararc.txt \
 	$RPM_BUILD_ROOT/etc/maradns/mararc.authorative
-cp ${RPM_BUILD_DIR}/%{name}-%{version}/doc/en/examples/example_full_mararc \
+cp ${RPM_BUILD_DIR}/%{name}/doc/en/examples/example_full_mararc \
 	$RPM_BUILD_ROOT/etc/maradns/mararc.full
-cp ${RPM_BUILD_DIR}/%{name}-%{version}/doc/en/examples/example_recursive_mararc.txt \
+cp ${RPM_BUILD_DIR}/%{name}/doc/en/examples/example_recursive_mararc.txt \
 	$RPM_BUILD_ROOT/etc/maradns/mararc.recursive
 
 # remove unwanted %doc files
-rm $RPM_BUILD_DIR/%{name}-%{version}/doc/en/Makefile \
-    $RPM_BUILD_DIR/%{name}-%{version}/doc/en/logfile \
-    $RPM_BUILD_DIR/%{name}-%{version}/doc/en/*.html \
-    $RPM_BUILD_DIR/%{name}-%{version}/doc/en/examples/Makefile
-rm -r $RPM_BUILD_DIR/%{name}-%{version}/doc/en/man \
-    $RPM_BUILD_DIR/%{name}-%{version}/doc/en/misc \
-    $RPM_BUILD_DIR/%{name}-%{version}/doc/en/ps \
-    $RPM_BUILD_DIR/%{name}-%{version}/doc/en/source
-rm $RPM_BUILD_DIR/%{name}-%{version}/doc/fr/Makefile \
-    $RPM_BUILD_DIR/%{name}-%{version}/doc/fr/faq.html \
-    $RPM_BUILD_DIR/%{name}-%{version}/doc/fr/examples/Makefile \
-    $RPM_BUILD_DIR/%{name}-%{version}/doc/fr/tutorial/Makefile
-rm -r $RPM_BUILD_DIR/%{name}-%{version}/doc/fr/man \
-    $RPM_BUILD_DIR/%{name}-%{version}/doc/fr/source
+rm $RPM_BUILD_DIR/%{name}/doc/en/Makefile \
+    $RPM_BUILD_DIR/%{name}/doc/en/logfile \
+    $RPM_BUILD_DIR/%{name}/doc/en/*.html \
+    $RPM_BUILD_DIR/%{name}/doc/en/examples/Makefile
+rm -r $RPM_BUILD_DIR/%{name}/doc/en/man \
+    $RPM_BUILD_DIR/%{name}/doc/en/misc \
+    $RPM_BUILD_DIR/%{name}/doc/en/ps \
+    $RPM_BUILD_DIR/%{name}/doc/en/source
+rm $RPM_BUILD_DIR/%{name}/doc/fr/Makefile \
+    $RPM_BUILD_DIR/%{name}/doc/fr/faq.html \
+    $RPM_BUILD_DIR/%{name}/doc/fr/examples/Makefile \
+    $RPM_BUILD_DIR/%{name}/doc/fr/tutorial/Makefile
+rm -r $RPM_BUILD_DIR/%{name}/doc/fr/man \
+    $RPM_BUILD_DIR/%{name}/doc/fr/source
 
 
 %clean
