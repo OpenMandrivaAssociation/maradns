@@ -8,6 +8,7 @@ Version:	%{version}
 Release:	%{release}
 License:	BSD
 Group:		System/Servers
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.maradns.org
 Source0:	http://www.maradns.org/download/%{name}-%{version}.tar.bz2
 Patch0:		maradns-1.1.42-install.patch.bz2
