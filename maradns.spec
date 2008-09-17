@@ -14,14 +14,13 @@ Patch0:		maradns-1.3.07.09-install.patch
 Patch1:		maradns-1.3.07.09-initscript.patch
 Patch2:		maradns-1.3.07.09-mararc_examples.patch
 Requires(post):	rpm-helper
-Conflicts:	tmdns
 
 %description
-MaraDNS is an authoritative and recursive DNS server made with 
+MaraDNS is an authoritative and recursive DNS server made with
 security in mind. More information is at http://www.maradns.org.
 
 %prep
-%setup -q 
+%setup -q
 %patch0 -p1 -b .path
 %patch1 -p1
 %patch2 -p1
