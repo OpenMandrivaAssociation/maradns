@@ -3,7 +3,7 @@
 Summary:	An authoritative and recursive DNS server made with security in mind
 Name:		maradns
 Version:	1.3.07.09
-Release:	%{mkrel 3}
+Release:	%mkrel 4
 License:	BSD
 Group:		System/Servers
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -26,11 +26,11 @@ security in mind. More information is at http://www.maradns.org.
 %patch2 -p1
 
 %build
-%make FLAGS="%{optflags}"
+%setup_compile_flags
+%make
 
 %install
- [ -n "%{buildroot}" -a "%{buildroot}" != / ] \
-  && rm -rf %{buildroot}/
+rm -rf %{buildroot}
 
 mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_bindir}
@@ -58,18 +58,17 @@ rm -r doc/en/man \
 rm -r doc/pt_br
 
 %clean
- [ -n "%{buildroot}" -a "%{buildroot}" != / ] \
-  && rm -rf %{buildroot}/
+rm -rf %{buildroot}/
 
 %pre
-#%%_pre_groupadd maradns $1 maradns maradns
-#%%_pre_useradd maradns $1 maradns "/etc/maradns" /bin/false
-if [ $1 = 1 ]
-	then
-	/usr/sbin/groupadd -r -g 99 maradns > /dev/null 2>&1
-	/usr/sbin/useradd -u 99 -r -d /etc/maradns -s /bin/false \
-	-c "Maradns pseudo user" -g maradns maradns  > /dev/null 2>&1
-fi
+%_pre_useradd maradns /etc/maradns /bin/false
+%_pre_groupadd maradns maradns
+#if [ $1 = 1 ]
+#	then
+#	/usr/sbin/groupadd -r -g 99 maradns > /dev/null 2>&1
+#	/usr/sbin/useradd -u 99 -r -d /etc/maradns -s /bin/false \
+#	-c "Maradns pseudo user" -g maradns maradns  > /dev/null 2>&1
+#fi
 
 %post
 %_post_service maradns
@@ -79,24 +78,24 @@ fi
 
 %postun
 %_postun_userdel maradns
-##/usr/sbin/userdel maradns
+%_postun_groupdel maradns
 
 
 %files
 %defattr(-,root,root)
 %doc doc/*
-%{_sbindir}/%{name}
-%{_sbindir}/zoneserver
-%{_sbindir}/duende
-%{_bindir}/fetchzone
-%{_bindir}/getzone
-%{_bindir}/askmara
-%{_mandir}/man1/*
-%{_mandir}/man5/*
-%{_mandir}/man8/*
+%attr(755,root,root) %{_sysconfdir}/rc.d/init.d/%{name}*
+%dir %{_sysconfdir}/%{name}
 %dir %{_sysconfdir}/%{name}/logger
 %config(noreplace) %{_sysconfdir}/%{name}/db.example.net
 %config(noreplace) %{_sysconfdir}/%{name}/mararc*
-%attr(755,root,root) %{_sysconfdir}/rc.d/init.d/%{name}*
+%{_bindir}/fetchzone
+%{_bindir}/getzone
+%{_bindir}/askmara
+%{_sbindir}/%{name}
+%{_sbindir}/zoneserver
+%{_sbindir}/duende
+%{_mandir}/man1/*
+%{_mandir}/man5/*
+%{_mandir}/man8/*
 %dir %{_logdir}/%{name}
-
