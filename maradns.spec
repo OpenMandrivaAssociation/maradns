@@ -3,7 +3,7 @@
 Summary:	An authoritative and recursive DNS server made with security in mind
 Name:		maradns
 Version:	1.3.07.09
-Release:	%mkrel 5
+Release:	%mkrel 6
 License:	BSD
 Group:		System/Servers
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -13,6 +13,7 @@ Source1:	http://www.maradns.org/download/%{topver}/%{version}/%{name}-%{version}
 Patch0:		maradns-1.3.07.09-install.patch
 Patch1:		maradns-1.3.07.09-initscript.patch
 Patch2:		maradns-1.3.07.09-mararc_examples.patch
+Patch3:		CVE-2011-0520.patch
 Requires(post):	rpm-helper
 
 %description
@@ -24,6 +25,7 @@ security in mind. More information is at http://www.maradns.org.
 %patch0 -p1 -b .path
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %setup_compile_flags
