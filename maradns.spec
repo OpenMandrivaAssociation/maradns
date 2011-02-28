@@ -3,7 +3,7 @@
 Summary:	An authoritative and recursive DNS server made with security in mind
 Name:		maradns
 Version:	1.4.06
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	BSD
 Group:		System/Servers
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
