@@ -21,7 +21,7 @@ MaraDNS is an authoritative and recursive DNS server made with
 security in mind. More information is at http://www.maradns.org.
 
 %package -n deadwood
-Summary:	a fully recursive DNS cache.
+Summary:	a fully recursive DNS cache
 Version:	%{deadwoodversion}
 
 %description -n deadwood
@@ -70,8 +70,9 @@ install -m 0644 deadwood-%{deadwoodversion}/doc/Deadwood.1 \
 	%{buildroot}%{_mandir}/man1/Deadwood.1
 install -m 0644 deadwood-%{deadwoodversion}/doc/dwood3rc \
 	%{buildroot}/%{_sysconfdir}/dwood3rc
-install -m 0755 %{SOURCE1} %{buildroot}/%{_sysconfdir}/rc.d/init.d/deadwood 
-# remove unwanted %doc files
+install -m 0755 %{SOURCE1} %{buildroot}/%{_sysconfdir}/rc.d/init.d/deadwood
+
+# remove unwanted doc files
 rm doc/en/Makefile \
 	doc/en/*.html \
 	doc/en/examples/Makefile
