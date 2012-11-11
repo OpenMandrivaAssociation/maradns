@@ -1,0 +1,39 @@
+--- maradns-1.3.07.09/build/mara.startup	2006-07-26 08:58:44.000000000 -0700
++++ maradns-1.3.07.09/build/mara.startup.new	2008-09-05 16:48:51.000000000 -0700
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ # MaraDNS	This shell script takes care of starting and stopping MaraDNS
+-# chkconfig: - 55 45
++# chkconfig: 345 55 45
+ # description: MaraDNS is secure Domain Name Server (DNS)
+ # probe: true
+ 
+@@ -54,17 +54,20 @@
+ fi
+ 
+ # The following is the directory we place MaraDNS log entries in
+-LOGDIR="/var/log"
++LOGDIR="/var/log/maradns"
+ 
+ # The following is a list of all mararc files which we will load or
+ # unload;
+-# Simple case: Only one MaraDNS process, using the /etc/mararc file
+-MARARCS="/etc/mararc"
+-# Case two: Three MaraDNS processes, one using /etc/mararc.1, the second one
+-# using /etc/mararc.2, and the third one using /etc/mararc.3
+-# (this is not as essential as it was in the 1.0 days; MaraDNS can now bind
+-#  to multiple IPs)
+-#MARARCS="/etc/mararc.1 /etc/mararc.2 /etc/mararc.3"
++# Simple case: Only one MaraDNS process, using the /etc/maradns/mararc.* file
++MARARCS="/etc/maradns/mararc.recursive"
++# Authorative dns server
++#MARARCS="/etc/maradns/mararc.authorative"
++# Full dns server
++#MARARCS="/etc/maradns/mararc.full"
++#
++# Case two: Three MaraDNS processes, one using /etc/maradns/mararc.1, the second one
++# using /etc/maradns/mararc.2, and the third one using /etc/maradns/mararc.3
++#MARARCS="/etc/maradns/mararc.1 /etc/maradns/mararc.2 /etc/maradns/mararc.3"
+ 
+ # Show usage information if this script is invoked with no arguments
+ if [ $# -lt 1 ] ; then

@@ -1,0 +1,87 @@
+--- maradns-1.3.07.09/build/install.sh	2007-08-29 09:30:03.000000000 -0700
++++ maradns-1.3.07.09/build/install.sh.new	2008-09-05 16:43:44.000000000 -0700
+@@ -106,10 +106,10 @@
+ cp askmara $BIN
+ # Install the duende tool
+ # We remove the file first to avoid the "text file busy" problem
+-if [ -f $BIN/duende ] ; then
+-	rm $BIN/duende
++if [ -f $SBIN/duende ] ; then
++	rm $SBIN/duende
+ fi
+-cp duende $BIN
++cp duende $SBIN
+ 
+ # Place the man pages in $MAN1, $MAN5, and $MAN8
+ if [ -d $TOPLEVEL/doc/$LANGUAGE/man ] ; then
+@@ -137,11 +137,11 @@
+ fi
+ 
+ # $RPM_BUILD_ROOT was added at the request of one of my users
+-if [ ! -f $RPM_BUILD_ROOT/etc/mararc ] ; then
+-	cp example_mararc $RPM_BUILD_ROOT/etc/mararc
+-else 
+-	echo /etc/mararc already there, not replacing
+-fi
++#if [ ! -f $RPM_BUILD_ROOT/etc/mararc ] ; then
++#	cp example_mararc $RPM_BUILD_ROOT/etc/mararc
++#else 
++#	echo /etc/mararc already there, not replacing
++#fi
+ if [ ! -d $RPM_BUILD_ROOT/etc/maradns ] ; then
+ 	mkdir $RPM_BUILD_ROOT/etc/maradns
+ 	chmod 755 $RPM_BUILD_ROOT/etc/maradns
+@@ -167,19 +167,19 @@
+ 	      cp $BUILDDIR/zoneserver.startup \
+ 	          $RPM_BUILD_ROOT/etc/rc.d/init.d/maradns.zoneserver
+ 	fi
+-	if cd $RPM_BUILD_ROOT/etc/rc.d/rc3.d/ ; then
+-		echo Starting up MaraDNS at runlevel 3
+-		rm S60maradns 2> /dev/null
+-		rm K60maradns.zoneserver 2> /dev/null
+-		ln -s ../init.d/maradns S60maradns
+-		ln -s ../init.d/maradns.zoneserver K60maradns.zoneserver
+-	fi
+-	if cd $RPM_BUILD_ROOT/etc/rc.d/rc5.d/ ; then
+-		echo starting up MaraDNS at runlevel 5
+-		rm S60maradns 2> /dev/null
+-		rm K60maradns.zoneserver 2> /dev/null
+-		ln -s ../init.d/maradns S60maradns
+-		ln -s ../init.d/maradns.zoneserver K60maradns.zoneserver
+-	fi
++#	if cd $RPM_BUILD_ROOT/etc/rc.d/rc3.d/ ; then
++#		echo Starting up MaraDNS at runlevel 3
++#		rm S60maradns 2> /dev/null
++#		rm K60maradns.zoneserver 2> /dev/null
++#		ln -s ../init.d/maradns S60maradns
++#		ln -s ../init.d/maradns.zoneserver K60maradns.zoneserver
++#	fi
++#	if cd $RPM_BUILD_ROOT/etc/rc.d/rc5.d/ ; then
++#		echo starting up MaraDNS at runlevel 5
++#		rm S60maradns 2> /dev/null
++#		rm K60maradns.zoneserver 2> /dev/null
++#		ln -s ../init.d/maradns S60maradns
++#		ln -s ../init.d/maradns.zoneserver K60maradns.zoneserver
++#	fi
+ fi
+ 
+--- maradns-1.3.07.09/build/install.locations	2002-05-05 05:11:47.000000000 -0700
++++ maradns-1.3.07.09/build/install.locations.new	2008-09-05 17:04:42.000000000 -0700
+@@ -27,13 +27,13 @@
+ # The location of the server programs
+ SBIN="$PREFIX/sbin/"
+ # The directory to put man pages which describe the end-user programs
+-MAN1="$PREFIX/man/man1/"
++MAN1="$PREFIX/share/man/man1/"
+ # The directory to put man pages which describe configuration file formats
+-MAN5="$PREFIX/man/man5/"
++MAN5="$PREFIX/share/man/man5/"
+ # The directory to put man pages which describe the server programs
+-MAN8="$PREFIX/man/man8/"
++MAN8="$PREFIX/share/man/man8/"
+ # The directory to put a copy of the MaraDNS documents on the system
+-DOCS="$PREFIX/doc/maradns-$VERSION"
++DOCS="$PREFIX/share/doc/maradns"
+ 
+ # Mandrake does not have a /usr/local/man.  Ugh.
+ # As a result, we need the following kludge to get this to

@@ -1,0 +1,44 @@
+--- maradns-1.3.07.09/doc/en/examples/example_recursive_mararc.txt	2005-11-21 15:30:18.000000000 -0800
++++ maradns-1.3.07.09/doc/en/examples/example_recursive_mararc.txt.new	2008-09-05 16:53:23.000000000 -0700
+@@ -11,7 +11,7 @@
+ # The address this DNS server runs on.  If you want to bind 
+ # to multiple addresses, separate them with a comma like this:
+ # "10.1.2.3, 10.1.2.4, 127.0.0.1"
+-ipv4_bind_addresses = "127.0.0.1"
++ipv4_bind_addresses = "0.0.0.0"
+ # The directory with all of the zone files
+ chroot_dir = "/etc/maradns"
+ 
+--- maradns-1.3.07.09/doc/en/examples/example_full_mararc	2007-11-26 09:20:33.000000000 -0800
++++ maradns-1.3.07.09/doc/en/examples/example_full_mararc.new	2008-09-05 16:53:00.000000000 -0700
+@@ -12,7 +12,7 @@
+ # The address this DNS server runs on.  If you want to bind 
+ # to multiple addresses, separate them with a comma like this:
+ # "10.1.2.3,10.1.2.4,127.0.0.1"
+-ipv4_bind_addresses = "127.0.0.1"
++ipv4_bind_addresses = "0.0.0.0"
+ # The directory with all of the zone files
+ chroot_dir = "/etc/maradns"
+ # The numeric UID MaraDNS will run as
+@@ -62,3 +62,10 @@
+ # by the "zoneserver" program.
+ #zone_transfer_acl = "10.1.1.1/24, 10.100.100.100/255.255.255.224"
+ 
++ipv4_alias["localhost"] = "127.0.0.0/8"
++recursive_acl = "localhost"
++random_seed_file = "/dev/urandom"
++maximum_cache_elements = 1024
++root_servers = {}
++root_servers["."] = "icann"
++
+--- maradns-1.3.07.09/doc/en/examples/example_authoritative_mararc.txt	2005-11-21 15:30:18.000000000 -0800
++++ maradns-1.3.07.09/doc/en/examples/example_authoritative_mararc.txt.new	2008-09-05 16:51:32.000000000 -0700
+@@ -7,7 +7,7 @@
+ # The address this DNS server runs on.  If you want to bind 
+ # to multiple addresses, separate them with a comma like this:
+ # "10.1.2.3,10.1.2.4,127.0.0.1"
+-ipv4_bind_addresses = "127.0.0.1"
++ipv4_bind_addresses = "0.0.0.0"
+ # The directory with all of the zone files
+ chroot_dir = "/etc/maradns"
+ 
