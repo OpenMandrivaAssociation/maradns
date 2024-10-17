@@ -7,7 +7,7 @@ Release:	3
 License:	BSD
 Group:		System/Servers
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-URL:		http://www.maradns.org
+URL:		https://www.maradns.org
 Source0:	http://www.maradns.org/download/%{topver}/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		maradns-1.3.07.09-install.patch
 Patch1:		maradns-1.3.07.09-initscript.patch
