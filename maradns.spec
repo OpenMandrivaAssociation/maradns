@@ -14,6 +14,7 @@ Patch1:		maradns-1.3.07.09-initscript.patch
 Patch2:		maradns-1.3.07.09-mararc_examples.patch
 Requires(post):	rpm-helper
 
+BuildRequires:	make
 %description
 MaraDNS is an authoritative and recursive DNS server made with
 security in mind. More information is at http://www.maradns.org.
